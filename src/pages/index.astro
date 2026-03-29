@@ -1,0 +1,783 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const features = [
+  {
+    icon: '🧠',
+    title: 'Répétition Espacée',
+    description:
+      'Le système identifie vos erreurs et replanifie automatiquement les questions pour renforcer vos points faibles, au bon moment.',
+    color: '#1E88E5',
+  },
+  {
+    icon: '⚔️',
+    title: 'Mode Duel 1v1',
+    description:
+      'Affrontez un camarade sur le même appareil. Questions en alternance, écran qui pivote — la compétition au service de l\'apprentissage.',
+    color: '#E53935',
+  },
+  {
+    icon: '📅',
+    title: 'Défis & Streaks',
+    description:
+      'Un défi chronométré chaque jour, un challenge 7 jours par semaine. Décrochez des badges pour les semaines parfaites.',
+    color: '#FFA000',
+  },
+  {
+    icon: '🏆',
+    title: 'Système de 10 Rangs',
+    description:
+      'De Novice Réseau à OSI Master. Débloquez chaque rang en progressant à travers les 377 questions — jusqu\'à la maîtrise totale.',
+    color: '#43A047',
+  },
+  {
+    icon: '📖',
+    title: 'Glossaire Intégré',
+    description:
+      'Tous les termes OSI organisés par couche, avec recherche instantanée. Votre référence toujours à portée de main, même hors ligne.',
+    color: '#5E35B1',
+  },
+  {
+    icon: '📊',
+    title: 'Statistiques Détaillées',
+    description:
+      'Suivez vos performances par couche et par difficulté. Identifiez exactement vos lacunes et mesurez votre progression dans le temps.',
+    color: '#00C4A7',
+  },
+];
+
+const screenshots = [
+  {
+    label: 'Tableau de bord',
+    description: 'Rang actuel, accès rapide à tous les modes et progression globale en un coup d\'œil.',
+    file: 'titres.MP4',
+    type: 'video',
+    color: '#006B5C',
+  },
+  {
+    label: 'Quiz en action',
+    description: 'Questions chronométrées avec feedback immédiat, explications détaillées et retour haptique.',
+    file: 'quiz-court.MP4',
+    type: 'video',
+    color: '#1E88E5',
+  },
+  {
+    label: 'Défi hebdomadaire',
+    description: 'Calendrier des 7 jours avec suivi quotidien des scores et badges de semaine parfaite.',
+    file: 'defi-hebdo.PNG',
+    type: 'image',
+    color: '#FFA000',
+  },
+  {
+    label: 'Mode Duel',
+    description: 'Compétition 1v1 sur un même appareil — l\'écran pivote entre chaque joueur.',
+    file: 'duel.MP4',
+    type: 'video',
+    color: '#E53935',
+  },
+  {
+    label: 'Statistiques',
+    description: 'Analyse couche par couche, historique et suivi des points à réviser.',
+    file: 'stats.MP4',
+    type: 'video',
+    color: '#5E35B1',
+  },
+];
+
+const osiLayers = [
+  { num: 7, name: 'Application', color: '#E53935' },
+  { num: 6, name: 'Présentation', color: '#EF6C00' },
+  { num: 5, name: 'Session', color: '#FFA000' },
+  { num: 4, name: 'Transport', color: '#43A047' },
+  { num: 3, name: 'Réseau', color: '#1E88E5' },
+  { num: 2, name: 'Liaison de données', color: '#5E35B1' },
+  { num: 1, name: 'Physique', color: '#546E7A' },
+];
+
+const ranks = [
+  { name: 'Novice Réseau', threshold: '0+' },
+  { name: 'Technicien Junior', threshold: '20+' },
+  { name: 'Analyste Protocoles', threshold: '60+' },
+  { name: 'Ingénieur OSI', threshold: '110+' },
+  { name: 'Expert Réseau', threshold: '170+' },
+  { name: 'Architecte Couches', threshold: '230+' },
+  { name: 'Maître des Protocoles', threshold: '290+' },
+  { name: 'Guru OSI', threshold: '340+' },
+  { name: 'Élite Réseau', threshold: '370+' },
+  { name: 'OSI Master', threshold: '377 ✦', highlight: true },
+];
+---
+
+<Layout>
+  <!-- ══════════════════════════════ NAVIGATION + PARTENARIAT ══ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-xl bg-[#0B1512]/80">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
+
+      <!-- Gauche : logo + titre app -->
+      <div class="flex items-center gap-3 shrink-0">
+        <img
+          src="/media/app_icon.png"
+          alt="OSI Master"
+          class="w-9 h-9 rounded-xl shadow-lg shadow-[#006B5C]/30 object-contain"
+        />
+        <span class="font-bold text-lg tracking-tight">OSI Master</span>
+      </div>
+
+      <!-- Centre : partenariat MEWO -->
+      <div class="hidden sm:flex items-center gap-3">
+        <div class="hidden lg:flex flex-col items-end">
+          <span class="text-white/25 text-[10px] uppercase tracking-widest font-medium">Partenaire officiel</span>
+          <span class="text-white/40 text-[10px] leading-tight max-w-xs text-right">Cursus de Bac à Bac+5 en alternance & initiale · Admin. systèmes & réseaux · Dev. informatique · Cybersécurité</span>
+        </div>
+        <div class="w-px h-8 bg-white/15 hidden lg:block"></div>
+        <a
+          href="https://www.mewo.fr/formations/informatique/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center hover:opacity-90 transition-opacity duration-200"
+          title="MEWO Campus Métiers — Cursus de Bac à Bac+5"
+        >
+          <div class="bg-white/90 rounded-lg px-3 py-1.5 shadow-md">
+            <img src="/media/MEWO.png" alt="MEWO Campus Métiers" class="h-7 object-contain" />
+          </div>
+        </a>
+      </div>
+
+      <!-- Droite : bouton télécharger -->
+      <a
+        href="#download"
+        class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#006B5C] hover:bg-[#007D6C] text-white font-semibold text-sm transition-all duration-200 hover:shadow-lg hover:shadow-[#006B5C]/30"
+      >
+        Télécharger
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-4 h-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M12 17V3"></path>
+          <path d="m6 11 6 6 6-6"></path>
+          <path d="M19 21H5"></path>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ═══════════════════════════════════════════════ HERO ══ -->
+    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden pt-20">
+      <!-- Gradient orbs -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          class="absolute top-1/4 -left-40 w-[500px] h-[500px] rounded-full bg-[#006B5C]/20 blur-[80px]"
+        >
+        </div>
+        <div
+          class="absolute bottom-1/4 -right-40 w-[400px] h-[400px] rounded-full bg-[#1E88E5]/12 blur-[80px]"
+        >
+        </div>
+        <div
+          class="absolute top-2/3 left-1/3 w-[300px] h-[300px] rounded-full bg-[#5E35B1]/10 blur-[60px]"
+        >
+        </div>
+        <!-- Grid lines subtle overlay -->
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:72px_72px]">
+        </div>
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Left: Text content -->
+        <div class="space-y-8 hero-text">
+          <!-- Badge -->
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#006B5C]/15 border border-[#006B5C]/30 text-[#00C4A7] text-sm font-medium"
+          >
+            <span class="w-2 h-2 rounded-full bg-[#00C4A7] animate-pulse"></span>
+            Bientôt disponible sur iOS & Android
+          </div>
+
+          <!-- Heading -->
+          <h1 class="text-5xl lg:text-[68px] font-black tracking-tight leading-[1.04]">
+            Maîtrisez<br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-[#00C4A7] to-[#43A047]"
+            >
+              le modèle OSI
+            </span>
+          </h1>
+
+          <!-- Subheading -->
+          <p class="text-xl text-white/55 leading-relaxed max-w-lg">
+            L'application de référence pour les étudiants BTS SIO.{' '}
+            <strong class="text-white/80">377 questions</strong>,{' '}
+            <strong class="text-white/80">7 couches</strong>,{' '}
+            <strong class="text-white/80">10 rangs</strong> à débloquer — avec répétition espacée intelligente,
+            mode duel et défis quotidiens.
+          </p>
+
+          <!-- Store buttons -->
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="#download"
+              class="flex items-center gap-3 px-6 py-4 rounded-2xl bg-white text-black hover:bg-white/90 transition-all duration-200 hover:scale-[1.03] shadow-xl shadow-black/30"
+            >
+              <svg class="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                ></path>
+              </svg>
+              <div>
+                <div class="text-[11px] text-black/50 font-medium leading-none mb-0.5">Bientôt sur</div>
+                <div class="text-base font-bold leading-none">App Store</div>
+              </div>
+            </a>
+
+            <a
+              href="#download"
+              class="flex items-center gap-3 px-6 py-4 rounded-2xl bg-white/8 border border-white/12 text-white hover:bg-white/12 transition-all duration-200 hover:scale-[1.03]"
+            >
+              <svg class="w-7 h-7 shrink-0" viewBox="0 0 512 512" fill="currentColor">
+                <path
+                  d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.6 225.6l-58.9-34-67.7 67.7 67.7 67.7 60.1-34c17.1-9.9 17.1-26.5-.2-34.9-.9-.8-1-.8-1.2-.5zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"
+                ></path>
+              </svg>
+              <div>
+                <div class="text-[11px] text-white/50 font-medium leading-none mb-0.5">Bientôt sur</div>
+                <div class="text-base font-bold leading-none">Google Play</div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Stat pills -->
+          <div class="flex flex-wrap gap-2.5 pt-1">
+            {
+              ['377 questions', '7 couches OSI', '10 rangs', 'Mode Duel 1v1', 'Gratuit'].map((tag) => (
+                <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-white/60">
+                  {tag}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Right: Hero phone mockup -->
+        <div class="flex justify-center lg:justify-end hero-phone">
+          <div class="phone-hero">
+            <div class="phone-frame-hero">
+              <div class="phone-notch-hero"></div>
+              <div class="phone-screen-hero">
+                <video
+                  src="/media/quiz-long.MP4"
+                  class="w-full h-full object-cover"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                ></video>
+              </div>
+            </div>
+            <div class="phone-glow-hero"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════ OSI LAYERS BAR ══ -->
+    <section class="border-y border-white/5 py-8 bg-white/[0.018]">
+      <div class="max-w-7xl mx-auto px-6">
+        <p class="text-center text-xs text-white/25 uppercase tracking-[0.18em] font-medium mb-5">
+          Les 7 couches du modèle OSI
+        </p>
+        <div class="flex gap-2 justify-center flex-wrap">
+          {
+            osiLayers.map((layer) => (
+              <div
+                class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold border"
+                style={`background: ${layer.color}14; border-color: ${layer.color}28; color: ${layer.color}`}
+              >
+                <span class="font-black text-xs opacity-50 w-3.5 text-right">{layer.num}</span>
+                {layer.name}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ FEATURES ══ -->
+    <section id="features" class="py-32">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 space-y-4 reveal">
+          <h2 class="text-4xl lg:text-5xl font-bold tracking-tight">
+            Tout pour maîtriser l'OSI
+          </h2>
+          <p class="text-lg text-white/45 max-w-2xl mx-auto leading-relaxed">
+            Une application complète pensée pour les étudiants qui veulent vraiment comprendre le
+            modèle OSI — pas juste le mémoriser pour un examen.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {
+            features.map((feature) => (
+              <div
+                class="feature-card p-7 rounded-2xl border border-white/[0.07] bg-white/[0.025] hover:bg-white/[0.05] transition-all duration-300 hover:border-white/[0.13] cursor-default"
+              >
+                <div
+                  class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5"
+                  style={`background: ${feature.color}18`}
+                >
+                  {feature.icon}
+                </div>
+                <h3 class="font-bold text-lg mb-2.5">{feature.title}</h3>
+                <p class="text-white/45 text-sm leading-relaxed">{feature.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════ SCREENSHOTS ══ -->
+    <section id="screenshots" class="py-28 bg-white/[0.018] border-y border-white/5">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 space-y-4 reveal">
+          <h2 class="text-4xl lg:text-5xl font-bold tracking-tight">
+            Une expérience<br />d'apprentissage soignée
+          </h2>
+          <p class="text-lg text-white/45">
+            Chaque écran pensé pour maximiser l'engagement et la mémorisation.
+          </p>
+        </div>
+
+        <!-- Scrollable phone row -->
+        <div
+          class="flex gap-7 justify-start lg:justify-center overflow-x-auto pb-6 snap-x snap-mandatory -mx-6 px-6 lg:mx-0 lg:px-0"
+        >
+          {
+            screenshots.map((screen) => (
+              <div class="screenshot-item snap-center shrink-0 flex flex-col items-center gap-5 w-[175px]">
+                <!-- Phone mockup -->
+                <div class="phone-sm" style={`--accent: ${screen.color}`}>
+                  <div class="phone-frame-sm">
+                    <div class="phone-notch-sm" />
+                    <div class="phone-screen-sm">
+                      {screen.type === 'video' ? (
+                        <video
+                          src={`/media/${screen.file}`}
+                          class="w-full h-full object-cover"
+                          autoplay
+                          loop
+                          muted
+                          playsinline
+                        ></video>
+                      ) : (
+                        <img
+                          src={`/media/${screen.file}`}
+                          alt={`OSI Master — ${screen.label}`}
+                          class="w-full h-full object-cover"
+                        />
+                      )}
+                    </div>
+                  </div>
+                  <div class="phone-glow-sm" style={`background: ${screen.color}`} />
+                </div>
+                <!-- Label -->
+                <div class="text-center">
+                  <p class="font-bold text-sm">{screen.label}</p>
+                  <p class="text-xs text-white/38 mt-1 leading-snug">{screen.description}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════ HOW IT WORKS ══ -->
+    <section id="how" class="py-32">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="text-center mb-16 space-y-4 reveal">
+          <h2 class="text-4xl lg:text-5xl font-bold tracking-tight">Comment ça marche ?</h2>
+          <p class="text-lg text-white/45">Trois étapes pour passer de Novice à OSI Master.</p>
+        </div>
+
+        <div class="space-y-4">
+          {
+            [
+              {
+                step: '01',
+                title: 'Téléchargez l\'application',
+                description:
+                  'Disponible gratuitement sur l\'App Store (iOS) et Google Play (Android). Installation en quelques secondes, aucun compte requis.',
+                color: '#006B5C',
+              },
+              {
+                step: '02',
+                title: 'Choisissez votre mode d\'apprentissage',
+                description:
+                  'Quiz libre, par couche spécifique, révision de vos erreurs, défi quotidien, challenge hebdomadaire ou mode duel — adaptez chaque session à vos objectifs du moment.',
+                color: '#1E88E5',
+              },
+              {
+                step: '03',
+                title: 'Progressez vers le rang OSI Master',
+                description:
+                  'Répondez aux 377 questions, montez de rang en rang et devenez OSI Master. Le système adaptatif s\'assure que vous consolidez vraiment chaque concept avant de passer à la suite.',
+                color: '#FFA000',
+              },
+            ].map((item) => (
+              <div class="reveal flex gap-6 items-start p-7 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] transition-colors duration-300">
+                <div
+                  class="w-12 h-12 rounded-full flex items-center justify-center font-black text-sm shrink-0 mt-0.5"
+                  style={`background: ${item.color}1e; color: ${item.color}`}
+                >
+                  {item.step}
+                </div>
+                <div>
+                  <h3 class="font-bold text-lg mb-2">{item.title}</h3>
+                  <p class="text-white/45 leading-relaxed">{item.description}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════════════════════════════════════ RANKS ══ -->
+    <section class="py-24 bg-white/[0.018] border-y border-white/5">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12 reveal">
+          <h2 class="text-3xl lg:text-4xl font-bold">De Novice à OSI Master</h2>
+          <p class="text-white/45 mt-3 text-lg">Chaque rang débloqué est un palier de maîtrise atteint.</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-2.5 reveal">
+          {
+            ranks.map((rank, i) => (
+              <div
+                class={
+                  rank.highlight
+                    ? 'px-5 py-3 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-[#006B5C] to-[#00A88F] shadow-lg shadow-[#006B5C]/25'
+                    : 'px-4 py-2.5 rounded-xl border border-white/[0.09] bg-white/[0.03] text-sm text-white/55 font-medium hover:text-white/80 hover:bg-white/[0.06] transition-colors duration-200'
+                }
+              >
+                <span class="text-xs mr-1.5 opacity-40">{String(i + 1).padStart(2, '0')}</span>
+                {rank.name}
+                <span class="text-xs ml-1.5 opacity-40">{rank.threshold}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════ DOWNLOAD CTA ══ -->
+    <section id="download" class="py-36 relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none">
+        <div
+          class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,107,92,0.12)_0%,transparent_70%)]"
+        >
+        </div>
+      </div>
+      <div class="relative max-w-3xl mx-auto px-6 text-center space-y-8 reveal">
+        <h2 class="text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
+          Prêt à devenir<br />
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-[#00C4A7] to-[#43A047]"
+          >
+            OSI Master ?
+          </span>
+        </h2>
+        <p class="text-xl text-white/45 max-w-xl mx-auto">
+          Rejoignez les étudiants BTS SIO qui ont fait d'OSI Master leur outil de révision préféré.
+          Gratuit, sans compte, sans publicité.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center pt-2">
+          <a
+            href="#"
+            class="flex items-center gap-4 px-8 py-5 rounded-2xl bg-white text-black hover:bg-white/92 transition-all duration-200 hover:scale-[1.04] shadow-2xl shadow-white/10"
+          >
+            <svg class="w-8 h-8 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+              ></path>
+            </svg>
+            <div class="text-left">
+              <div class="text-xs text-black/45 font-medium leading-none mb-1">Bientôt sur</div>
+              <div class="text-xl font-bold leading-none">App Store</div>
+            </div>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center gap-4 px-8 py-5 rounded-2xl bg-[#006B5C] text-white hover:bg-[#00796B] transition-all duration-200 hover:scale-[1.04] shadow-2xl shadow-[#006B5C]/35"
+          >
+            <svg class="w-8 h-8 shrink-0" viewBox="0 0 512 512" fill="currentColor">
+              <path
+                d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.6 225.6l-58.9-34-67.7 67.7 67.7 67.7 60.1-34c17.1-9.9 17.1-26.5-.2-34.9-.9-.8-1-.8-1.2-.5zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"
+              ></path>
+            </svg>
+            <div class="text-left">
+              <div class="text-xs text-white/50 font-medium leading-none mb-1">Bientôt sur</div>
+              <div class="text-xl font-bold leading-none">Google Play</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════════════════ FOOTER ══ -->
+  <footer class="border-t border-white/[0.07] py-10">
+    <div
+      class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/28"
+    >
+      <div class="flex flex-col sm:flex-row items-center gap-2.5">
+        <div class="flex items-center gap-2.5">
+          <img src="/media/app_icon.png" alt="OSI Master" class="w-6 h-6 rounded-lg object-contain" />
+          <span class="font-medium">OSI Master</span>
+          <span>·</span>
+          <span>© 2026</span>
+        </div>
+        <span class="hidden sm:inline">·</span>
+        <span>Conçu par <a href="https://www.linkedin.com/in/numeritim/" target="_blank" rel="noopener noreferrer" class="text-white/50 font-semibold hover:text-white/70 transition-colors duration-200">NUMERITIM</a></span>
+        <span class="hidden sm:inline">·</span>
+        <span>En partenariat avec <a href="https://www.mewo.fr/formations/informatique/" target="_blank" rel="noopener noreferrer" class="text-white/50 font-semibold hover:text-white/70 transition-colors duration-200">MEWO</a></span>
+      </div>
+      <div class="flex gap-6">
+        <a href="/contact" class="hover:text-white/60 transition-colors duration-200">Contact</a>
+        <a href="/mentions-legales" class="hover:text-white/60 transition-colors duration-200">Mentions légales</a>
+        <a href="/confidentialite" class="hover:text-white/60 transition-colors duration-200"
+          >Politique de confidentialité</a
+        >
+      </div>
+    </div>
+  </footer>
+</Layout>
+
+<style is:global>
+  /* ── Hero phone (large) ─────────────────────────────── */
+  .phone-hero {
+    position: relative;
+    width: 285px;
+  }
+  .phone-frame-hero {
+    position: relative;
+    width: 285px;
+    height: 610px;
+    background: #181818;
+    border-radius: 46px;
+    border: 6px solid #272727;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.07),
+      0 60px 120px rgba(0, 0, 0, 0.7),
+      0 0 0 1px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+  }
+  .phone-notch-hero {
+    position: absolute;
+    top: 13px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 96px;
+    height: 28px;
+    background: #181818;
+    border-radius: 14px;
+    z-index: 10;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+  .phone-screen-hero {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    overflow: hidden;
+    background: #0e1c17;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .phone-glow-hero {
+    position: absolute;
+    bottom: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 48px;
+    background: #006b5c;
+    border-radius: 50%;
+    filter: blur(30px);
+    opacity: 0.45;
+  }
+
+  /* ── Screenshot phones (small) ─────────────────────── */
+  .phone-sm {
+    position: relative;
+    width: 160px;
+  }
+  .phone-frame-sm {
+    position: relative;
+    width: 160px;
+    height: 346px;
+    background: #181818;
+    border-radius: 30px;
+    border: 5px solid #252525;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+      0 30px 70px rgba(0, 0, 0, 0.55);
+    overflow: hidden;
+  }
+  .phone-notch-sm {
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 58px;
+    height: 18px;
+    background: #181818;
+    border-radius: 10px;
+    z-index: 10;
+  }
+  .phone-screen-sm {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    overflow: hidden;
+    background: #0e1c17;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .phone-glow-sm {
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 28px;
+    border-radius: 50%;
+    filter: blur(18px);
+    opacity: 0.38;
+  }
+
+  /* ── Placeholder common ─────────────────────────────── */
+  .ph-placeholder,
+  .ph-placeholder-sm {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(140deg, #0e1c17 0%, #12231d 100%);
+  }
+
+  /* ── Animations ─────────────────────────────────────── */
+  @keyframes fadein-up {
+    from {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadein-right {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+
+  .hero-text {
+    animation: fadein-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .hero-phone {
+    animation:
+      fadein-right 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both,
+      float 7s ease-in-out 1.2s infinite;
+  }
+
+  /* ── Scroll reveal ──────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .feature-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 0.3s ease,
+      border-color 0.3s ease;
+  }
+  .feature-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .screenshot-item {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .screenshot-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  // Intersection Observer — scroll reveal with staggered delay for grids
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' },
+  );
+
+  // Simple reveal elements
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+  // Staggered grid items
+  document.querySelectorAll('.feature-card').forEach((el, i) => {
+    (el as HTMLElement).style.transitionDelay = `${i * 0.07}s`;
+    observer.observe(el);
+  });
+
+  document.querySelectorAll('.screenshot-item').forEach((el, i) => {
+    (el as HTMLElement).style.transitionDelay = `${i * 0.09}s`;
+    observer.observe(el);
+  });
+</script>

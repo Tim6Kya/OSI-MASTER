@@ -1,0 +1,180 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Politique de confidentialité — OSI Master" description="Politique de confidentialité de l'application OSI Master, éditée par NUMERITIM.">
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-xl bg-[#0B1512]/80">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
+      <a href="/" class="flex items-center gap-3 shrink-0">
+        <img src="/media/app_icon.png" alt="OSI Master" class="w-9 h-9 rounded-xl shadow-lg shadow-[#006B5C]/30 object-contain" />
+        <span class="font-bold text-lg tracking-tight">OSI Master</span>
+      </a>
+      <div class="hidden sm:flex items-center gap-3">
+        <div class="hidden lg:flex flex-col items-end">
+          <span class="text-white/25 text-[10px] uppercase tracking-widest font-medium">Partenaire officiel</span>
+          <span class="text-white/40 text-[10px] leading-tight max-w-xs text-right">Cursus de Bac à Bac+5 en alternance & initiale · Admin. systèmes & réseaux · Dev. informatique · Cybersécurité</span>
+        </div>
+        <div class="w-px h-8 bg-white/15 hidden lg:block"></div>
+        <a href="https://www.mewo.fr/formations/informatique/" target="_blank" rel="noopener noreferrer" class="flex items-center hover:opacity-75 transition-opacity duration-200" title="MEWO Campus Métiers">
+          <div class="bg-white/90 rounded-lg px-3 py-1.5 shadow-md">
+            <img src="/media/MEWO.png" alt="MEWO Campus Métiers" class="h-7 object-contain" />
+          </div>
+        </a>
+      </div>
+      <a href="/" class="text-sm text-white/50 hover:text-white transition-colors duration-200 shrink-0">← Retour</a>
+    </div>
+  </nav>
+
+  <main class="min-h-screen pt-44 pb-28">
+    <div class="max-w-2xl mx-auto px-6">
+
+      <!-- En-tête -->
+      <div class="mb-16">
+        <p class="text-[#00C4A7] text-sm font-semibold uppercase tracking-widest mb-5">Vie privée</p>
+        <h1 class="text-4xl lg:text-5xl font-black tracking-tight mb-5">Politique de confidentialité</h1>
+        <p class="text-white/40 text-sm">Dernière mise à jour : mars 2026</p>
+      </div>
+
+      <!-- Résumé visuel -->
+      <div class="grid sm:grid-cols-3 gap-4 mb-16">
+        {[
+          { icon: '🔒', title: 'Zéro collecte', desc: 'Aucune donnée personnelle collectée' },
+          { icon: '📵', title: 'Sans compte', desc: 'Aucune inscription requise' },
+          { icon: '📱', title: 'Local uniquement', desc: 'Tout reste sur votre appareil' },
+        ].map(item => (
+          <div class="p-6 rounded-2xl border border-white/[0.08] bg-white/[0.025] text-center">
+            <div class="text-3xl mb-3">{item.icon}</div>
+            <p class="font-bold text-sm text-white">{item.title}</p>
+            <p class="text-white/40 text-xs mt-1.5 leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="space-y-14 text-white/60 leading-loose text-[15px]">
+
+        <!-- 1. Responsable -->
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">1. Responsable du traitement</h2>
+          <p>
+            Le responsable du traitement des données est <strong class="text-white/90">NUMERITIM</strong>, entrepreneur individuel, éditeur de l'application OSI Master.
+          </p>
+          <p class="mt-4">
+            Contact : <a href="mailto:contact.numeritim@gmail.com" class="text-[#00C4A7] hover:underline">contact.numeritim@gmail.com</a>
+          </p>
+        </section>
+
+        <!-- 2. Données collectées -->
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">2. Données collectées</h2>
+          <p class="mb-5">
+            <strong class="text-white/90">L'application OSI Master ne collecte aucune donnée personnelle.</strong>
+          </p>
+          <p class="mb-5">
+            Aucune adresse e-mail, aucun nom, aucun identifiant ni numéro de téléphone n'est demandé. Aucune création de compte n'est requise.
+          </p>
+          <p>
+            Les seules données générées sont des données de progression pédagogique (questions répondues, scores, rangs, statistiques par couche). Ces données sont stockées exclusivement en local sur l'appareil via SQLite, et ne sont <strong class="text-white/90">jamais transmises à des serveurs distants</strong>.
+          </p>
+        </section>
+
+        <!-- 3. Tiers -->
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">3. Absence de transmission à des tiers</h2>
+          <p>
+            NUMERITIM ne transmet, ne vend et ne partage aucune donnée avec des tiers.
+          </p>
+          <p class="mt-4">
+            L'application ne contient aucun tracker, aucune régie publicitaire, ni aucun SDK d'analyse comportementale.
+          </p>
+        </section>
+
+        <!-- 4. Permissions -->
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">4. Permissions système</h2>
+          <p class="mb-6">
+            L'application peut demander les permissions suivantes, strictement nécessaires à son fonctionnement :
+          </p>
+          <div class="space-y-3">
+            {[
+              { perm: 'Vibration', why: 'Retour haptique lors des réponses — désactivable dans les réglages.' },
+              { perm: 'Stockage local', why: 'Sauvegarde de la progression sur l\'appareil.' },
+            ].map(item => (
+              <div class="flex gap-4 p-5 rounded-xl bg-white/[0.025] border border-white/[0.06]">
+                <span class="text-[#00C4A7] font-semibold text-sm w-32 shrink-0 mt-0.5">{item.perm}</span>
+                <span class="text-sm leading-relaxed">{item.why}</span>
+              </div>
+            ))}
+          </div>
+          <p class="mt-5 text-sm">
+            Aucun accès à la caméra, aux contacts, à la localisation ou aux communications n'est requis.
+          </p>
+        </section>
+
+        <!-- 5. Export -->
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">5. Sauvegarde et export des données</h2>
+          <p>
+            L'application propose une fonctionnalité d'export et d'import de vos données de progression. Ces fichiers sont générés et manipulés exclusivement par l'utilisateur sur son propre appareil.
+          </p>
+          <p class="mt-4">
+            NUMERITIM n'a accès à aucun de ces fichiers.
+          </p>
+        </section>
+
+        <!-- 6. Mineurs -->
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">6. Mineurs</h2>
+          <p>
+            L'application est destinée à des étudiants en formation informatique (BTS SIO et niveaux équivalents). Elle ne collecte aucune donnée, y compris pour les utilisateurs mineurs.
+          </p>
+        </section>
+
+        <!-- 7. Site vitrine -->
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">7. Ce site vitrine</h2>
+          <p>
+            Ce site de présentation ne dépose aucun cookie de traçage. Aucun outil d'analyse de trafic n'est activé.
+          </p>
+        </section>
+
+        <!-- 8. Vos droits -->
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">8. Vos droits</h2>
+          <p class="mb-5">
+            Conformément au RGPD et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, d'effacement et de portabilité de vos données.
+          </p>
+          <p class="mb-5">
+            Dans la mesure où l'application ne collecte aucune donnée personnelle, ces droits s'exercent directement sur l'appareil de l'utilisateur via la fonctionnalité de réinitialisation dans les réglages.
+          </p>
+          <p>
+            Pour toute question : <a href="mailto:contact.numeritim@gmail.com" class="text-[#00C4A7] hover:underline">contact.numeritim@gmail.com</a>
+          </p>
+        </section>
+
+        <!-- 9. Modifications -->
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">9. Modifications</h2>
+          <p>
+            NUMERITIM se réserve le droit de mettre à jour cette politique à tout moment. La date de dernière mise à jour est indiquée en haut de cette page.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-white/[0.07] py-8">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/28">
+      <div class="flex flex-wrap items-center gap-2">
+        <span>OSI Master · © 2026 · Conçu par</span>
+        <a href="https://www.linkedin.com/in/numeritim/" target="_blank" rel="noopener noreferrer" class="text-white/50 font-semibold hover:text-white/70 transition-colors duration-200">NUMERITIM</a>
+        <span>· En partenariat avec <a href="https://www.mewo.fr/formations/informatique/" target="_blank" rel="noopener noreferrer" class="text-white/50 font-semibold hover:text-white/70 transition-colors duration-200">MEWO</a></span>
+      </div>
+      <div class="flex gap-6">
+        <a href="/contact" class="hover:text-white/60 transition-colors duration-200">Contact</a>
+        <a href="/mentions-legales" class="hover:text-white/60 transition-colors duration-200">Mentions légales</a>
+        <a href="/confidentialite" class="text-[#00C4A7]">Confidentialité</a>
+      </div>
+    </div>
+  </footer>
+</Layout>

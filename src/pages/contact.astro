@@ -1,0 +1,135 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact — OSI Master" description="Contactez NUMERITIM, créateur de l'application OSI Master.">
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-xl bg-[#0B1512]/80">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
+      <a href="/" class="flex items-center gap-3 shrink-0">
+        <img src="/media/app_icon.png" alt="OSI Master" class="w-9 h-9 rounded-xl shadow-lg shadow-[#006B5C]/30 object-contain" />
+        <span class="font-bold text-lg tracking-tight">OSI Master</span>
+      </a>
+      <div class="hidden sm:flex items-center gap-3">
+        <div class="hidden lg:flex flex-col items-end">
+          <span class="text-white/25 text-[10px] uppercase tracking-widest font-medium">Partenaire officiel</span>
+          <span class="text-white/40 text-[10px] leading-tight max-w-xs text-right">Cursus de Bac à Bac+5 en alternance & initiale · Admin. systèmes & réseaux · Dev. informatique · Cybersécurité</span>
+        </div>
+        <div class="w-px h-8 bg-white/15 hidden lg:block"></div>
+        <a href="https://www.mewo.fr/formations/informatique/" target="_blank" rel="noopener noreferrer" class="flex items-center hover:opacity-75 transition-opacity duration-200" title="MEWO Campus Métiers">
+          <div class="bg-white/90 rounded-lg px-3 py-1.5 shadow-md">
+            <img src="/media/MEWO.png" alt="MEWO Campus Métiers" class="h-7 object-contain" />
+          </div>
+        </a>
+      </div>
+      <a href="/" class="text-sm text-white/50 hover:text-white transition-colors duration-200 shrink-0">← Retour</a>
+    </div>
+  </nav>
+
+  <main class="min-h-screen pt-44 pb-28">
+    <div class="max-w-xl mx-auto px-6">
+
+      <!-- En-tête -->
+      <div class="mb-16">
+        <p class="text-[#00C4A7] text-sm font-semibold uppercase tracking-widest mb-5">Contact</p>
+        <h1 class="text-4xl lg:text-5xl font-black tracking-tight mb-5">Nous contacter</h1>
+        <p class="text-white/50 text-lg leading-relaxed">
+          Une question sur l'application, un bug à signaler ou une suggestion ?
+          N'hésitez pas à nous écrire — nous répondons généralement sous 48 heures ouvrées.
+        </p>
+      </div>
+
+      <!-- Cartes de contact -->
+      <div class="space-y-4">
+
+        <!-- NUMERITIM -->
+        <div class="flex items-center gap-5 p-6 rounded-2xl border border-white/[0.08] bg-white/[0.025]">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#006B5C] to-[#00C4A7] flex items-center justify-center shrink-0 shadow-lg shadow-[#006B5C]/25">
+            <span class="text-white font-black text-xs">OSI</span>
+          </div>
+          <div>
+            <p class="font-bold text-white text-lg">NUMERITIM</p>
+            <p class="text-white/40 text-sm mt-0.5">Entrepreneur individuel · Créateur de OSI Master</p>
+          </div>
+        </div>
+
+        <!-- E-mail -->
+        <div class="flex items-center gap-5 p-6 rounded-2xl border border-white/[0.08] bg-white/[0.025] hover:bg-white/[0.04] transition-colors duration-200 group">
+          <div class="w-12 h-12 rounded-xl bg-[#006B5C]/20 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-[#00C4A7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-white/40 text-xs uppercase tracking-widest font-medium mb-1">E-mail</p>
+            <a href="mailto:contact.numeritim@gmail.com" class="text-[#00C4A7] hover:underline font-medium">
+              contact.numeritim@gmail.com
+            </a>
+          </div>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="flex items-center gap-5 p-6 rounded-2xl border border-white/[0.08] bg-white/[0.025] hover:bg-white/[0.04] transition-colors duration-200">
+          <div class="w-12 h-12 rounded-xl bg-[#006B5C]/20 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-[#00C4A7]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-white/40 text-xs uppercase tracking-widest font-medium mb-1">LinkedIn</p>
+            <a href="https://linkedin.com/company/numeritim" target="_blank" rel="noopener noreferrer" class="text-[#00C4A7] hover:underline font-medium">
+              NUMERITIM
+            </a>
+          </div>
+        </div>
+
+        <!-- MEWO -->
+        <a
+          href="https://www.mewo.fr/formations/informatique/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-5 p-6 rounded-2xl border border-white/[0.08] bg-white/[0.025] hover:bg-white/[0.04] transition-colors duration-200 group"
+        >
+          <div class="w-12 h-12 rounded-xl bg-white/90 flex items-center justify-center shrink-0 shadow-md p-1.5">
+            <img src="/media/MEWO.png" alt="MEWO Campus Métiers" class="w-full h-full object-contain" />
+          </div>
+          <div>
+            <p class="font-bold text-white text-lg">MEWO Campus Métiers</p>
+            <p class="text-white/40 text-sm mt-0.5">Partenaire officiel · Formations BTS SIO, Bachelor Informatique & plus</p>
+            <p class="text-[#00C4A7] text-xs mt-1.5 group-hover:underline">mewo.fr/formations/informatique →</p>
+          </div>
+        </a>
+
+        <!-- MEWO LinkedIn -->
+        <div class="flex items-center gap-5 p-6 rounded-2xl border border-white/[0.08] bg-white/[0.025] hover:bg-white/[0.04] transition-colors duration-200">
+          <div class="w-12 h-12 rounded-xl bg-[#006B5C]/20 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-[#00C4A7]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-white/40 text-xs uppercase tracking-widest font-medium mb-1">LinkedIn — MEWO</p>
+            <a href="https://www.linkedin.com/school/campusmewo/posts/?feedView=all" target="_blank" rel="noopener noreferrer" class="text-[#00C4A7] hover:underline font-medium">
+              MEWO Campus Métiers
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-white/[0.07] py-8">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/28">
+      <div class="flex flex-wrap items-center gap-2">
+        <span>OSI Master · © 2026 · Conçu par</span>
+        <a href="https://www.linkedin.com/in/numeritim/" target="_blank" rel="noopener noreferrer" class="text-white/50 font-semibold hover:text-white/70 transition-colors duration-200">NUMERITIM</a>
+        <span>· En partenariat avec <a href="https://www.mewo.fr/formations/informatique/" target="_blank" rel="noopener noreferrer" class="text-white/50 font-semibold hover:text-white/70 transition-colors duration-200">MEWO</a></span>
+      </div>
+      <div class="flex gap-6">
+        <a href="/contact" class="text-[#00C4A7]">Contact</a>
+        <a href="/mentions-legales" class="hover:text-white/60 transition-colors duration-200">Mentions légales</a>
+        <a href="/confidentialite" class="hover:text-white/60 transition-colors duration-200">Confidentialité</a>
+      </div>
+    </div>
+  </footer>
+</Layout>

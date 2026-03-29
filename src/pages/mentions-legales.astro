@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Mentions légales — OSI Master" description="Mentions légales de l'application et du site OSI Master, édités par NUMERITIM.">
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-xl bg-[#0B1512]/80">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
+      <a href="/" class="flex items-center gap-3 shrink-0">
+        <img src="/media/app_icon.png" alt="OSI Master" class="w-9 h-9 rounded-xl shadow-lg shadow-[#006B5C]/30 object-contain" />
+        <span class="font-bold text-lg tracking-tight">OSI Master</span>
+      </a>
+      <div class="hidden sm:flex items-center gap-3">
+        <div class="hidden lg:flex flex-col items-end">
+          <span class="text-white/25 text-[10px] uppercase tracking-widest font-medium">Partenaire officiel</span>
+          <span class="text-white/40 text-[10px] leading-tight max-w-xs text-right">Cursus de Bac à Bac+5 en alternance & initiale · Admin. systèmes & réseaux · Dev. informatique · Cybersécurité</span>
+        </div>
+        <div class="w-px h-8 bg-white/15 hidden lg:block"></div>
+        <a href="https://www.mewo.fr/formations/informatique/" target="_blank" rel="noopener noreferrer" class="flex items-center hover:opacity-75 transition-opacity duration-200" title="MEWO Campus Métiers">
+          <div class="bg-white/90 rounded-lg px-3 py-1.5 shadow-md">
+            <img src="/media/MEWO.png" alt="MEWO Campus Métiers" class="h-7 object-contain" />
+          </div>
+        </a>
+      </div>
+      <a href="/" class="text-sm text-white/50 hover:text-white transition-colors duration-200 shrink-0">← Retour</a>
+    </div>
+  </nav>
+
+  <main class="min-h-screen pt-44 pb-28">
+    <div class="max-w-2xl mx-auto px-6">
+
+      <!-- En-tête -->
+      <div class="mb-16">
+        <p class="text-[#00C4A7] text-sm font-semibold uppercase tracking-widest mb-5">Légal</p>
+        <h1 class="text-4xl lg:text-5xl font-black tracking-tight mb-5">Mentions légales</h1>
+        <p class="text-white/40 text-sm">Dernière mise à jour : mars 2026</p>
+      </div>
+
+      <div class="space-y-14 text-white/60 leading-loose text-[15px]">
+
+        <!-- 1. Éditeur -->
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">1. Éditeur</h2>
+          <p class="mb-6">
+            Le présent site vitrine et l'application mobile <strong class="text-white/90">OSI Master</strong> sont édités par :
+          </p>
+          <div class="rounded-2xl border border-white/[0.08] bg-white/[0.025] overflow-hidden">
+            {[
+              { label: 'Dénomination', value: 'NUMERITIM', strong: true },
+              { label: 'Forme juridique', value: 'Entrepreneur individuel' },
+              { label: 'SIRET', value: '951 945 245 00037' },
+              { label: 'E-mail', value: 'contact.numeritim@gmail.com', isEmail: true },
+            ].map((row, i) => (
+              <div class={`flex items-baseline gap-4 px-6 py-4 ${i > 0 ? 'border-t border-white/[0.05]' : ''}`}>
+                <span class="text-white/35 text-sm w-36 shrink-0">{row.label}</span>
+                {row.isEmail
+                  ? <a href={`mailto:${row.value}`} class="text-[#00C4A7] hover:underline">{row.value}</a>
+                  : <span class={row.strong ? 'text-white font-semibold' : 'text-white/80'}>{row.value}</span>
+                }
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- 2. Directeur de publication -->
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">2. Directeur de la publication</h2>
+          <p>
+            Le directeur de la publication est le représentant légal de <strong class="text-white/90">NUMERITIM</strong>, entrepreneur individuel.
+          </p>
+        </section>
+
+        <!-- 3. Hébergement -->
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">3. Hébergement</h2>
+          <p class="mb-6">Le site est hébergé par :</p>
+          <div class="rounded-2xl border border-white/[0.08] bg-white/[0.025] overflow-hidden">
+            {[
+              { label: 'Société', value: 'Netlify, Inc.' },
+              { label: 'Adresse', value: '44 Montgomery Street, Suite 300, San Francisco, CA 94104, USA' },
+              { label: 'Site web', value: 'www.netlify.com', isLink: true, href: 'https://www.netlify.com' },
+            ].map((row, i) => (
+              <div class={`flex items-baseline gap-4 px-6 py-4 ${i > 0 ? 'border-t border-white/[0.05]' : ''}`}>
+                <span class="text-white/35 text-sm w-36 shrink-0">{row.label}</span>
+                {row.isLink
+                  ? <a href={row.href} target="_blank" rel="noopener noreferrer" class="text-[#00C4A7] hover:underline">{row.value}</a>
+                  : <span class="text-white/80">{row.value}</span>
+                }
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- 4. Propriété intellectuelle -->
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">4. Propriété intellectuelle</h2>
+          <p class="mb-5">
+            L'ensemble des contenus du site et de l'application OSI Master — textes, graphismes, logotype, icônes, sons et code source — sont la propriété exclusive de <strong class="text-white/90">NUMERITIM</strong>, sauf mention contraire.
+          </p>
+          <p>
+            Toute reproduction, distribution, modification ou exploitation, même partielle, sans autorisation préalable écrite de NUMERITIM est interdite.
+          </p>
+        </section>
+
+        <!-- 5. Données personnelles -->
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">5. Données personnelles</h2>
+          <p class="mb-5">
+            L'application OSI Master ne collecte aucune donnée personnelle et ne nécessite aucune création de compte. Toutes les données de progression sont stockées localement sur l'appareil de l'utilisateur.
+          </p>
+          <p>
+            Pour en savoir plus, consultez notre <a href="/confidentialite" class="text-[#00C4A7] hover:underline">Politique de confidentialité</a>.
+          </p>
+        </section>
+
+        <!-- 6. Partenariat -->
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">6. Partenariat</h2>
+          <p class="mb-5">
+            Le développement et l'hébergement de l'application OSI Master bénéficient du soutien de <strong class="text-white/90">MEWO Campus Métiers</strong>, organisme de formation proposant des cursus certifiants en informatique (BTS SIO, Bachelor, et plus) en alternance et en initiale.
+          </p>
+          <p>
+            MEWO Campus Métiers n'est pas co-éditeur de l'application ni du site vitrine. Toute responsabilité éditoriale reste exclusive à NUMERITIM.
+          </p>
+        </section>
+
+        <!-- 7. Liens hypertextes -->
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">7. Liens hypertextes</h2>
+          <p>
+            Le site peut contenir des liens vers des sites tiers (App Store, Google Play, LinkedIn, mewo.fr). NUMERITIM n'est pas responsable du contenu de ces sites et ne saurait être tenu responsable de tout dommage résultant de leur consultation.
+          </p>
+        </section>
+
+        <!-- 8. Droit applicable -->
+
+        <section>
+          <h2 class="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">8. Droit applicable</h2>
+          <p>
+            Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-white/[0.07] py-8">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/28">
+      <div class="flex flex-wrap items-center gap-2">
+        <span>OSI Master · © 2026 · Conçu par</span>
+        <a href="https://www.linkedin.com/in/numeritim/" target="_blank" rel="noopener noreferrer" class="text-white/50 font-semibold hover:text-white/70 transition-colors duration-200">NUMERITIM</a>
+        <span>· En partenariat avec <a href="https://www.mewo.fr/formations/informatique/" target="_blank" rel="noopener noreferrer" class="text-white/50 font-semibold hover:text-white/70 transition-colors duration-200">MEWO</a></span>
+      </div>
+      <div class="flex gap-6">
+        <a href="/contact" class="hover:text-white/60 transition-colors duration-200">Contact</a>
+        <a href="/mentions-legales" class="text-[#00C4A7]">Mentions légales</a>
+        <a href="/confidentialite" class="hover:text-white/60 transition-colors duration-200">Confidentialité</a>
+      </div>
+    </div>
+  </footer>
+</Layout>
