@@ -98,6 +98,7 @@ import Layout from '../layouts/Layout.astro';
             {[
               { perm: 'Vibration', why: 'Retour haptique lors des réponses — désactivable dans les réglages.' },
               { perm: 'Stockage local', why: 'Sauvegarde de la progression sur l\'appareil.' },
+              { perm: 'Notifications', why: 'Rappels locaux (défi du jour, relance d\'inactivité) générés sur l\'appareil — désactivables à tout moment.' },
             ].map(item => (
               <div class="flex gap-4 p-5 rounded-xl bg-white/[0.025] border border-white/[0.06]">
                 <span class="text-[#00C4A7] font-semibold text-sm w-32 shrink-0 mt-0.5">{item.perm}</span>
